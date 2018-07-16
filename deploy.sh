@@ -3,6 +3,7 @@ set -euo pipefail
 
 for file in .??*;  do
   [[ "${file}" == ".git" ]] && continue
+  [[ "${file}" == ".gitignore" ]] && continue
   [[ "${file}" == ".DS_Store" ]] && continue
 
   dest=${HOME}/${file}
