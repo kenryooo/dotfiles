@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-for ${file} in .??*;  do
+for file in .??*;  do
   [[ "${file}" == ".git" ]] && continue
   [[ "${file}" == ".DS_Store" ]] && continue
 
