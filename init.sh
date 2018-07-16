@@ -27,7 +27,7 @@ fi
 if [ -f "./brew.sh" ]; then
   source ./brew.sh
 fi
-for package in ${packages[@]}; do
+for package in "${packages[@]}"; do
   if ! brew list | grep $package &> /dev/null; then
     echo "installing ${package}..."
     brew install ${package}
