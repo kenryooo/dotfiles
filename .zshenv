@@ -1,5 +1,4 @@
 DOTDIR=~/dotfiles
-ZDOTDIR=$DOTDIR/.zsh
 
 # KEY BINDING
 bindkey -e
