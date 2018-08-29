@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-packages=( 
+packages=(
   bash
   "vim --with-gettext --with-override-system-vi"
   awscli
@@ -22,6 +22,7 @@ packages=(
   mysql
   mycli
   pgcli
+  ctags
 )
 
 # 自動インストールはしない

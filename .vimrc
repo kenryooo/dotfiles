@@ -17,8 +17,7 @@ source $VIMRUNTIME/defaults.vim
 " 分からないオプション名は先頭に ' を付けてhelpしましょう。例:
 " :h 'helplang
 
-" packadd! vimdoc-ja                " 日本語help の読み込み
-" set helplang=ja,en                " help言語の設定
+set helplang=ja,en                " help言語の設定
 
 set number
 
@@ -36,8 +35,10 @@ set nofixendofline                " Windowsのエディタの人達に嫌われ�
 set ambiwidth=double              " ○, △, □等の文字幅をASCII文字の倍にする
 set directory-=.                  " swapファイルはローカル作成がトラブル少なめ
 set formatoptions+=mM             " 日本語の途中でも折り返す
+set autowrite                     " :make 時に自動保存
 let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
 let loaded_matchparen = 1         " カーソルが括弧上にあっても括弧ペアをハイライトさせない
+let mapleader = ","               " leader を , に変更
 
 " :grep 等でquickfixウィンドウを開く (:lgrep 等でlocationlistウィンドウを開く)
 "augroup qf_win
@@ -106,41 +107,115 @@ if has('autocmd')
 endif
 
 "-------------------------------------------------------------------------------
-" カラースキームの設定
-" colorscheme torte
-
-" try
-"   silent hi CursorIM
-" catch /E411/
-"   " CursorIM (IME ON中のカーソル色)が定義されていなければ、紫に設定
-"   hi CursorIM ctermfg=16 ctermbg=127 guifg=#000000 guibg=#af00af
-" endtry
-" 
-
-"-------------------------------------------------------------------------------
 " プラグイン
 
 call plug#begin('~/.vim/plugged')
+Plug 'vim-jp/vimdoc-ja'
 
+" Theme
 Plug 'jdkanani/vim-material-theme'
-Plug 'maralla/completor.vim'
+
+" NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'vim-jp/vimdoc-ja'
+
+Plug 'maralla/completor.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'elzr/vim-json'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+
+" Json
+Plug 'elzr/vim-json'
+
+" Yaml
+Plug 'avakhov/vim-yaml'
+
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 call plug#end()
 
 "-------------------------------------------------------------------------------
-" カラースキームの設定
+" Color Sheme
 syntax enable
 set background=dark
 colorscheme material-theme
 
+" Go completion
+let g:completor_gocode_binary = "${GOPATH}/bin/gocode"
+
+" Tagbar
+let g:tagbar_autofocus = 1
+
+" NERDTree
+let NERDTreeShowHidden=1
+map <C-e> <plug>NERDTreeTabsToggle<CR>
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" vim-go
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+let g:go_fmt_command = "goimports"
+let g:go_textobj_include_function_doc = 0
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_build_constraints = 1
+let g:go_test_timeout = '10s'
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_auto_type_info = 1
+set updatetime=100
+let g:go_auto_sameids = 1
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+" terraform
+let g:terraform_fmt_on_save = 1
+
+" 行末のスペースを取り除く
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " vim:set et ts=2 sw=0:
