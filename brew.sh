@@ -14,16 +14,20 @@ packages=(
   pyenv
   pyenv-virtualenv
   nodenv
+  terraform
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
   kubernetes-helm
+  kube-ps1
+  stern
   redis
   sqlite
   mysql
   mycli
   pgcli
   ctags
+  circleci
 )
 
 # 自動インストールはしない
