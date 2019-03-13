@@ -13,6 +13,7 @@ packages=(
   go
   pyenv
   pyenv-virtualenv
+  nodenv
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
