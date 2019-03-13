@@ -43,9 +43,6 @@ export MANPAGER=/usr/local/bin/vimpager
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-export PATH="$HOME/.ndenv/bin:$PATH"
-eval "$(ndenv init -)"
-
 export PYENV_ROOT="${HOME}/.pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
