@@ -2,11 +2,11 @@
 
 packages=(
   bash
-  "vim --with-gettext --with-override-system-vi"
+  vim
   awscli
   tig
-  "wget --with-iri"
-  "gnu-sed --with-default-names"
+  wget
+  gnu-sed
   yq
   httpie
   highlight
@@ -29,7 +29,7 @@ packages=(
 cask_packages=(
   iterm2
   google-chrome
-  "firefox --language=ja"
+  firefox
   virtualbox
   wireshark
   burp-suite
