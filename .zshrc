@@ -143,5 +143,12 @@ bindkey '^]' ghq-fzf
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
+# kube-ps1
+[ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ] && source /usr/local/opt/kube-ps1/share/kube-ps1.sh
+PS1='$(kube_ps1)'$PS1
+
+# gcloud
+[ -f ~/google-cloud-sdk/completion.zsh.inc ] && source ~/google-cloud-sdk/completion.zsh.inc
+[ -f ~/google-cloud-sdk/path.zsh.inc ] && source ~/google-cloud-sdk/path.zsh.inc
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
