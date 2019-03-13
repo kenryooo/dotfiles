@@ -1,5 +1,5 @@
 # ----------------------------------
-#  ZPLUG 
+#  ZPLUG
 # ----------------------------------
 export ZPLUG_HOME=~/.zplug
 [[ -d $ZPLUG_HOME ]] || curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -47,7 +47,7 @@ zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/zsh-completions"
 
 zplug check --verbose || zplug install
-zplug load 
+zplug load
 
 # THEME Setting
 export LIME_DIR_DISPLAY_COMPONENTS=2
@@ -75,7 +75,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 # もしかして
 setopt correct
 
-# No beep 
+# No beep
 setopt no_beep
 
 ## 色を使う
@@ -111,6 +111,10 @@ alias tree="ls -T"
 # mkdir
 alias mkdir="mkdir -p"
 
+# sed
+alias sed="gsed"
+
+# dirs
 alias dirs="dirs -plv"
 
 # -------------------------------------
