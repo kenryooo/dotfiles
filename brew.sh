@@ -3,6 +3,7 @@
 packages=(
   bash
   vim
+  vimpager
   awscli
   tig
   wget
