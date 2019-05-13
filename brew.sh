@@ -14,6 +14,7 @@ packages=(
   go
   pyenv
   pyenv-virtualenv
+  pipenv
   nodenv
   terraform
   docker-machine
