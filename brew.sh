@@ -17,6 +17,7 @@ packages=(
   pipenv
   nodenv
   terraform
+  rbenv
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
