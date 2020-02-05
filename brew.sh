@@ -16,8 +16,8 @@ packages=(
   pyenv-virtualenv
   pipenv
   nodenv
-  terraform
   rbenv
+  tfenv
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
