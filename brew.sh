@@ -20,6 +20,7 @@ packages=(
   nodenv
   rbenv
   tfenv
+  direnv
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
