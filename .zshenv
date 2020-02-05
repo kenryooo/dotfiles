@@ -50,3 +50,5 @@ if [ -d "${PYENV_ROOT}" ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+eval "$(rbenv init -)"
+

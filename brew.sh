@@ -4,19 +4,23 @@ packages=(
   bash
   vim
   vimpager
+  gdb
   awscli
   tig
   wget
   gnu-sed
   yq
   httpie
+  unar
   highlight
   go
   pyenv
   pyenv-virtualenv
   pipenv
   nodenv
-  terraform
+  rbenv
+  tfenv
+  direnv
   docker-machine
   docker-machine-driver-xhyve
   kubernetes-cli
