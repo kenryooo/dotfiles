@@ -43,12 +43,15 @@ export MANPAGER=/usr/local/bin/vimpager
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
+# export PYENV_ROOT="${HOME}/.pyenv"
+# if [ -d "${PYENV_ROOT}" ]; then
+#     export PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
+#     eval "$(pyenv init -)"
+#     eval "$(pyenv virtualenv-init -)"
+# fi
 
 eval "$(rbenv init -)"
+
+## GIT
+export PATH=$PATH:/usr/local/Cellar/git/2.26.2/bin
 

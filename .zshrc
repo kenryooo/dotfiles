@@ -40,11 +40,11 @@ zplug "ogham/exa", \
   use:"*macos*"
 
 # EXTENSION
-zplug "b4b4r07/enhancd", use:init.sh
+[[ -d $ENHANCD_DIR ]] || zplug "b4b4r07/enhancd", use:init.sh
 zplug "mollifier/anyframe"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
-zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-completions", defer:1
 
 zplug check --verbose || zplug install
 zplug load
@@ -144,11 +144,12 @@ fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 # kube-ps1
-[ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ] && source /usr/local/opt/kube-ps1/share/kube-ps1.sh
-PS1='$(kube_ps1)'$PS1
+# [ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ] && source /usr/local/opt/kube-ps1/share/kube-ps1.sh
+# PS1='$(kube_ps1)'$PS1
 
 # gcloud
-[ -f ~/google-cloud-sdk/completion.zsh.inc ] && source ~/google-cloud-sdk/completion.zsh.inc
-[ -f ~/google-cloud-sdk/path.zsh.inc ] && source ~/google-cloud-sdk/path.zsh.inc
+# [ -f ~/google-cloud-sdk/completion.zsh.inc ] && source ~/google-cloud-sdk/completion.zsh.inc
+# [ -f ~/google-cloud-sdk/path.zsh.inc ] && source ~/google-cloud-sdk/path.zsh.inc
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+

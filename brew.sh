@@ -6,6 +6,7 @@ packages=(
   vimpager
   gdb
   awscli
+  git-secrets
   tig
   wget
   gnu-sed
@@ -54,4 +55,5 @@ cask_packages=(
   sourcetree
   vscode
   gimp
+  aws-vault
 )
