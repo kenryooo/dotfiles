@@ -6,6 +6,8 @@ if has('win32')                   " Windows 32bit または 64bit ?
 else
   set encoding=utf-8
 endif
+set fileformats=unix,dos,mac
+
 scriptencoding utf-8              " This file's encoding
 
 " 推奨設定の読み込み (:h default.vim)
