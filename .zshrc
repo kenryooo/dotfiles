@@ -22,7 +22,7 @@ zplug "b4b4r07/emoji-cli", \
   on:"stedolan/jq"
 zplug "mrowa44/emojify", \
   as:command
-zplug "motemen/ghq", \
+zplug "x-motemen/ghq", \
   as:command, \
   from:gh-r
 zplug "junegunn/fzf-bin", \
